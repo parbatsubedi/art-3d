@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Special</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffe5e5, #fff0f0);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        .valentine-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        .question {
+            font-size: 24px;
+            color: #ff6b9e;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .begging-gif {
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-yes {
+            background-color: #ff6b9e;
+            color: white;
+        }
+
+        .btn-no {
+            background-color: #ff9abb;
+            color: white;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .btn-no:hover {
+            transform: translate(50px, -50px);
+        }
+
+        .love-message {
+            display: none;
+            color: #ff6b9e;
+            font-size: 28px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .love-gif {
+            max-width: 300px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff6b9e;
+            opacity: 0.7;
+            animation: fall linear infinite;
+            text-shadow: 0 0 5px rgba(255,107,158,0.5);
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ff6b9e;
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+        .navbar a:hover {
+            opacity: 0.8;
+        }
+        .navbar-title {
+            font-size: 20px;
+        }
+        .navbar-link {
+            background-color: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-title">💘 Valentine's Day</div>
+        <a href="index.html" class="navbar-link">Return to Art3D</a>
+    </nav>
+    <div class="valentine-container">
+        <div id="question" class="question">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia2.giphy.com%2Fmedia%2FifB1v1W3Db0GIW7uTA%2Fgiphy.gif" alt="Begging Heart" class="begging-gif">
+            Will you be my Valentine?
+        </div>
+        <div class="button-container">
+            <button id="yesBtn" class="btn btn-yes">Yes</button>
+            <button id="noBtn" class="btn btn-no">No</button>
+        </div>
+        <div id="loveMessage" class="love-message">
+            Yay! You've made my heart smile! 💖
+            <img id="loveGif" class="love-gif" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc.tenor.com%2FN3Dmm2elOnAAAAAC%2Fcant-wait.gif&f=1&nofb=1&ipt=066885974b4be0593ed94b9e0f1cd6a4a50d827621bbdf0cf28a679cdd233f16&ipo=images" alt="Love Gif">
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const question = document.getElementById('question');
+        const loveMessage = document.getElementById('loveMessage');
+
+        noBtn.addEventListener('mouseover', moveNoButton);
+        yesBtn.addEventListener('click', showLoveMessage);
+
+        function moveNoButton(e) {
+            const containerWidth = window.innerWidth;
+            const containerHeight = window.innerHeight;
+            
+            const newX = Math.random() * (containerWidth - noBtn.offsetWidth);
+            const newY = Math.random() * (containerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${newX}px`;
+            noBtn.style.top = `${newY}px`;
+        }
+
+        function showLoveMessage() {
+            question.style.display = 'none';
+            noBtn.style.display = 'none';
+            yesBtn.style.display = 'none';
+            loveMessage.style.display = 'block';
+
+            // Create falling hearts
+            for (let i = 0; i < 50; i++) {
+                createHeart();
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.animationDuration = `${5 + Math.random() * 5}s`;
+            heart.style.fontSize = `${10 + Math.random() * 30}px`;
+            
+            document.body.appendChild(heart);
+
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+    </script>
+</body>
+</html>
