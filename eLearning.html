@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Learning Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <style>
+        .course-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 3.5rem;
+            background-color: #f8f9fa;
+        }
+        .main-content {
+            margin-left: 250px;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+                padding-top: 0;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-graduation-cap"></i> EduLearn
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex ms-auto me-3">
+                    <div class="input-group">
+                        <input type="search" class="form-control" placeholder="Search courses...">
+                        <button class="btn btn-outline-primary"><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-bs-toggle="dropdown">
+                            <img src="/api/placeholder/32/32" class="rounded-circle" alt="User">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar border-end" style="width: 250px;">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action active">
+                <i class="fas fa-home me-2"></i> Dashboard
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <i class="fas fa-book me-2"></i> My Courses
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <i class="fas fa-calendar me-2"></i> Calendar
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <i class="fas fa-certificate me-2"></i> Certificates
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <i class="fas fa-comments me-2"></i> Discussion
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <i class="fas fa-chart-line me-2"></i> Progress
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content p-4 mt-5">
+        <!-- Welcome Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <h4>Welcome back, Student!</h4>
+                        <p>Continue your learning journey. You've completed 65% of your current course.</p>
+                        <div class="progress bg-light">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Grid -->
+        <h4 class="mb-4">My Courses</h4>
+        <div class="row g-4">
+            <!-- Course Card 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card course-card h-100">
+                    <img src="/api/placeholder/400/200" class="card-img-top" alt="Course">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-primary">In Progress</span>
+                            <small class="text-muted">4.5 <i class="fas fa-star text-warning"></i></small>
+                        </div>
+                        <h5 class="card-title">Web Development Fundamentals</h5>
+                        <p class="card-text">Learn the basics of web development with HTML, CSS, and JavaScript.</p>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" style="width: 60%"></div>
+                        </div>
+                        <a href="#" class="btn btn-primary">Continue Learning</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card course-card h-100">
+                    <img src="/api/placeholder/400/200" class="card-img-top" alt="Course">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-success">Completed</span>
+                            <small class="text-muted">4.8 <i class="fas fa-star text-warning"></i></small>
+                        </div>
+                        <h5 class="card-title">Python Programming</h5>
+                        <p class="card-text">Master Python programming with hands-on projects and exercises.</p>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                        </div>
+                        <a href="#" class="btn btn-secondary">Review Course</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Events -->
+        <h4 class="mt-5 mb-4">Upcoming Events</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="card-title">Live Workshop: Advanced CSS</h5>
+                                <p class="card-text">Tomorrow, 2:00 PM</p>
+                            </div>
+                            <button class="btn btn-outline-primary">Join</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle sidebar on mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const mediaQuery = window.matchMedia('(max-width: 768px)');
+            function handleScreenChange(e) {
+                if (e.matches) {
+                    document.querySelector('.sidebar').style.display = 'none';
+                    document.querySelector('.main-content').style.marginLeft = '0';
+                } else {
+                    document.querySelector('.sidebar').style.display = 'block';
+                    document.querySelector('.main-content').style.marginLeft = '250px';
+                }
+            }
+            mediaQuery.addListener(handleScreenChange);
+            handleScreenChange(mediaQuery);
+        });
+    </script>
+</body>
+</html>
