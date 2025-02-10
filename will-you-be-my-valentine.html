@@ -169,6 +169,18 @@
             to { opacity: 1; transform: scale(1); }
         }
         
+        .footer {
+            background-color: #ff6b9e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 16px;
+            margin-top: auto;
+        }
+        
         @media (max-width: 768px) {
         body {
             font-size: 16px;
@@ -227,6 +239,11 @@
         .love-gif {
             max-width: 80%;
         }
+        
+        .footer {
+            font-size: 14px; /* Slightly smaller text on medium screens */
+            padding: 10px;
+        }
     }
 
     /* For Extra Small Screens (below 480px) */
@@ -275,6 +292,11 @@
         #loveMessage {
             font-size: 20px; /* Reduce font size even further for extra small screens */
         }
+        
+        .footer {
+            font-size: 12; /* Slightly smaller text on medium screens */
+            padding: 8px;
+        }
     }
 
     </style>
@@ -306,6 +328,11 @@
             </p>
         </div>
     </div>
+    
+    <footer class="footer">
+        <p>&copy; 2025 <a style="text-decoration: none;" href="https://www.instagram.com/parbat_subedi_/">Parbat Subedi</a>. All rights reserved.</p>
+    </footer>
+    
 
     <script>
         const noBtn = document.getElementById('noBtn');
