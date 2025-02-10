@@ -142,6 +142,17 @@
             text-shadow: 0 0 5px rgba(255,107,158,0.5);
         }
 
+        #loveMessage {
+            display: none;
+            color: #ff6b9e;
+            font-size: 28px;
+            animation: fadeIn 1s ease-in;
+            max-width: 90%; /* Ensures responsiveness */
+            margin: 0 auto; /* Centers the message */
+            word-wrap: break-word; /* Ensures that text will break if too long */
+            padding: 20px; /* Adds space around the text */
+        }
+
         @keyframes fall {
             0% {
                 transform: translateY(-100vh) rotate(0deg);
@@ -168,6 +179,10 @@
             padding: 30px;
             max-width: 90%;
             width: 90%;
+        }
+        
+        #loveMessage {
+            font-size: 24px; /* Reduce font size for smaller screens */
         }
 
         .navbar {
@@ -201,6 +216,10 @@
             font-size: 16px;
         }
 
+        .btn-no {
+            font-size: 14px;
+            padding: 8px 15px;
+        }
         .btn-no:hover {
             transform: translate(30px, -30px);
         }
@@ -244,9 +263,17 @@
             padding: 10px;
             font-size: 14px;
         }
-
+        .btn-no {
+            font-size: 14px;
+            padding: 8px 15px;
+            width: auto; /* Allow auto width but within limits */
+            max-width: 120px;
+        }
         .love-gif {
             max-width: 100%;
+        }
+        #loveMessage {
+            font-size: 20px; /* Reduce font size even further for extra small screens */
         }
     }
 
@@ -270,8 +297,9 @@
             <button id="noBtn" class="btn btn-no">No</button>
         </div>
         <div id="loveMessage" class="love-message">
-            Yay! You've made my heart smile! 💖
             <img id="loveGif" class="love-gif" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc.tenor.com%2FN3Dmm2elOnAAAAAC%2Fcant-wait.gif&f=1&nofb=1&ipt=066885974b4be0593ed94b9e0f1cd6a4a50d827621bbdf0cf28a679cdd233f16&ipo=images" alt="Love Gif">
+            Yay! You've made my heart smile! 💖<br><p>
+            <span id="dynamicText"></span></p>
         </div>
     </div>
 
@@ -283,7 +311,7 @@
         noBtn.addEventListener('mouseover', moveNoButton);
         yesBtn.addEventListener('click', showLoveMessage);
 
-        function moveNoButton(e) {
+        function moveNoButton() {
             const containerWidth = window.innerWidth;
             const containerHeight = window.innerHeight;
             
@@ -293,6 +321,9 @@
             noBtn.style.position = 'fixed';
             noBtn.style.left = `${newX}px`;
             noBtn.style.top = `${newY}px`;
+
+            // Ensure size remains consistent
+            noBtn.style.transform = 'scale(1)'; 
         }
 
         function showLoveMessage() {
@@ -327,6 +358,36 @@
                 heart.remove();
             }, 10000);
         }
+        
+        function showLoveMessage() {
+            document.querySelector('.love-shaped-text').style.display = 'none';
+            document.querySelector('.begging-gif').style.display = 'none';
+            document.querySelector('.heart-message').style.display = 'none';
+            document.querySelector('.button-container').style.display = 'none';
+            
+            loveMessage.style.display = 'block';
+            let text = `I just knew you’d say YES! My heart was doing little happy dances even before you clicked!  
+            You are the best thing that ever happened to me, and this moment just made my whole world brighter! 🌟💞`;
+            
+            let words = text.split(" ");
+            let dynamicTextElement = document.getElementById('dynamicText');
+            
+            let index = 0;
+            function revealText() {
+                if (index < words.length) {
+                    dynamicTextElement.innerHTML += words[index] + " ";
+                    index++;
+                    setTimeout(revealText, 50); // Adjust the speed here (50ms between each word)
+                }
+            }
+            revealText();
+
+            // Create falling hearts
+            for (let i = 0; i < 50; i++) {
+                createHeart();
+            }
+        }
+
     </script>
 </body>
 </html>
