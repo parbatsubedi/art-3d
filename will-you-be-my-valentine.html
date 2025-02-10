@@ -19,6 +19,7 @@
         .valentine-container {
             flex-grow: 1;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
@@ -31,19 +32,61 @@
             margin: 20px auto;
         }
 
-        .question {
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ff6b9e;
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+        .navbar a:hover {
+            opacity: 0.8;
+        }
+        .navbar-title {
+            font-size: 20px;
+        }
+        .navbar-link {
+            background-color: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .love-shaped-text {
+            clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+            background-color: #ff6b9e;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
             font-size: 24px;
-            color: #ff6b9e;
-            margin-bottom: 30px;
+            max-width: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
         }
 
         .begging-gif {
             max-width: 200px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .heart-message {
+            color: #ff6b9e;
+            font-size: 18px;
+            margin-bottom: 20px;
+            max-width: 350px;
+            text-align: center;
         }
 
         .button-container {
@@ -115,35 +158,98 @@
             to { opacity: 1; transform: scale(1); }
         }
         
+        @media (max-width: 768px) {
+        body {
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .valentine-container {
+            padding: 30px;
+            max-width: 90%;
+            width: 90%;
+        }
+
         .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #ff6b9e;
-            color: white;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            flex-direction: column;
+            text-align: center;
+            padding: 15px;
         }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: opacity 0.3s ease;
-        }
-        .navbar a:hover {
-            opacity: 0.8;
-        }
-        .navbar-title {
+
+        .love-shaped-text {
             font-size: 20px;
+            padding: 15px;
         }
-        .navbar-link {
-            background-color: rgba(255,255,255,0.2);
-            padding: 8px 15px;
-            border-radius: 5px;
+
+        .begging-gif {
+            max-width: 150px;
         }
+
+        .heart-message {
+            font-size: 16px;
+            max-width: 90%;
+        }
+
+        .button-container {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            width: 80%;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        .btn-no:hover {
+            transform: translate(30px, -30px);
+        }
+
+        .love-gif {
+            max-width: 80%;
+        }
+    }
+
+    /* For Extra Small Screens (below 480px) */
+    @media (max-width: 480px) {
+        .valentine-container {
+            padding: 20px;
+        }
+
+        .navbar-title {
+            font-size: 18px;
+        }
+
+        .love-shaped-text {
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .begging-gif {
+            max-width: 120px;
+        }
+
+        .heart-message {
+            font-size: 14px;
+            max-width: 100%;
+        }
+
+        .button-container {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .love-gif {
+            max-width: 100%;
+        }
+    }
+
     </style>
 </head>
 <body>
@@ -152,9 +258,12 @@
         <a href="index.html" class="navbar-link">Return to Art3D</a>
     </nav>
     <div class="valentine-container">
-        <div id="question" class="question">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia2.giphy.com%2Fmedia%2FifB1v1W3Db0GIW7uTA%2Fgiphy.gif" alt="Begging Heart" class="begging-gif">
+        <div class="love-shaped-text">
             Will you be my Valentine?
+        </div>
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia2.giphy.com%2Fmedia%2FifB1v1W3Db0GIW7uTA%2Fgiphy.gif" alt="Begging Heart" class="begging-gif">
+        <div class="heart-message">
+            You're the missing piece that completes my heart. Every moment with you feels like a beautiful dream I never want to wake up from.
         </div>
         <div class="button-container">
             <button id="yesBtn" class="btn btn-yes">Yes</button>
@@ -169,7 +278,6 @@
     <script>
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
-        const question = document.getElementById('question');
         const loveMessage = document.getElementById('loveMessage');
 
         noBtn.addEventListener('mouseover', moveNoButton);
@@ -188,9 +296,11 @@
         }
 
         function showLoveMessage() {
-            question.style.display = 'none';
-            noBtn.style.display = 'none';
-            yesBtn.style.display = 'none';
+            document.querySelector('.love-shaped-text').style.display = 'none';
+            document.querySelector('.begging-gif').style.display = 'none';
+            document.querySelector('.heart-message').style.display = 'none';
+            document.querySelector('.button-container').style.display = 'none';
+            
             loveMessage.style.display = 'block';
 
             // Create falling hearts
@@ -198,6 +308,8 @@
                 createHeart();
             }
         }
+
+
 
         function createHeart() {
             const heart = document.createElement('div');
